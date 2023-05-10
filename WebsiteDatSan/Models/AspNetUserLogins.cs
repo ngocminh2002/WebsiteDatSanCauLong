@@ -12,13 +12,12 @@ namespace WebsiteDatSan.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ChiTiet_DatSan
+    public partial class AspNetUserLogins
     {
-        public int MaSan { get; set; }
-        public int MaDat { get; set; }
-        public Nullable<double> TongTien { get; set; }
+        public string LoginProvider { get; set; }
+        public string ProviderKey { get; set; }
+        public string UserId { get; set; }
     
-        public virtual DatSan DatSan { get; set; }
-        public virtual San San { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }
