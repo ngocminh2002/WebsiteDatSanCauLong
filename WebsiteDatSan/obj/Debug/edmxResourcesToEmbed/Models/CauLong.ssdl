@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebsiteDatSanCauLongModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChiTiet_DatSan">
+    <Key>
+      <PropertyRef Name="MaSan" />
+      <PropertyRef Name="MaDat" />
+    </Key>
+    <Property Name="MaSan" Type="int" Nullable="false" />
+    <Property Name="MaDat" Type="int" Nullable="false" />
+    <Property Name="TongTien" Type="float" />
+  </EntityType>
+  <EntityType Name="DatSan">
+    <Key>
+      <PropertyRef Name="MaDat" />
+    </Key>
+    <Property Name="MaDat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NgayDat" Type="datetime" />
+    <Property Name="SoTien" Type="float" />
+  </EntityType>
+  <EntityType Name="LoaiSan">
+    <Key>
+      <PropertyRef Name="MaLoaiSan" />
+    </Key>
+    <Property Name="MaLoaiSan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenLoaiSan" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="San">
+    <Key>
+      <PropertyRef Name="MaSan" />
+    </Key>
+    <Property Name="MaSan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaLoaiSan" Type="int" Nullable="false" />
+    <Property Name="TenSan" Type="nvarchar" MaxLength="50" />
+    <Property Name="DIaChi" Type="nvarchar" MaxLength="150" />
+    <Property Name="GIaTien" Type="money" />
+    <Property Name="TrangThai" Type="bit" />
+    <Property Name="HinhAnh" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK__ChiTiet_D__MaDat__2B3F6F97">
+    <End Role="DatSan" Type="Self.DatSan" Multiplicity="1" />
+    <End Role="ChiTiet_DatSan" Type="Self.ChiTiet_DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DatSan">
+        <PropertyRef Name="MaDat" />
+      </Principal>
+      <Dependent Role="ChiTiet_DatSan">
+        <PropertyRef Name="MaDat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTiet_D__MaSan__2A4B4B5E">
+    <End Role="San" Type="Self.San" Multiplicity="1" />
+    <End Role="ChiTiet_DatSan" Type="Self.ChiTiet_DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="San">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="ChiTiet_DatSan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__San__MaLoaiSan__2C3393D0">
+    <End Role="LoaiSan" Type="Self.LoaiSan" Multiplicity="1" />
+    <End Role="San" Type="Self.San" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSan">
+        <PropertyRef Name="MaLoaiSan" />
+      </Principal>
+      <Dependent Role="San">
+        <PropertyRef Name="MaLoaiSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebsiteDatSanCauLongModelStoreContainer">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChiTiet_DatSan" EntityType="Self.ChiTiet_DatSan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatSan" EntityType="Self.DatSan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoaiSan" EntityType="Self.LoaiSan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="San" EntityType="Self.San" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTiet_D__MaDat__2B3F6F97" Association="Self.FK__ChiTiet_D__MaDat__2B3F6F97">
+      <End Role="DatSan" EntitySet="DatSan" />
+      <End Role="ChiTiet_DatSan" EntitySet="ChiTiet_DatSan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTiet_D__MaSan__2A4B4B5E" Association="Self.FK__ChiTiet_D__MaSan__2A4B4B5E">
+      <End Role="San" EntitySet="San" />
+      <End Role="ChiTiet_DatSan" EntitySet="ChiTiet_DatSan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__San__MaLoaiSan__2C3393D0" Association="Self.FK__San__MaLoaiSan__2C3393D0">
+      <End Role="LoaiSan" EntitySet="LoaiSan" />
+      <End Role="San" EntitySet="San" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebsiteDatSanCauLongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="ChiTiet_DatSan">
+    <Key>
+      <PropertyRef Name="MaSan" />
+      <PropertyRef Name="MaDat" />
+    </Key>
+    <Property Name="MaSan" Type="Int32" Nullable="false" />
+    <Property Name="MaDat" Type="Int32" Nullable="false" />
+    <Property Name="TongTien" Type="Double" />
+    <NavigationProperty Name="DatSan" Relationship="Self.FK__ChiTiet_D__MaDat__2B3F6F97" FromRole="ChiTiet_DatSan" ToRole="DatSan" />
+    <NavigationProperty Name="San" Relationship="Self.FK__ChiTiet_D__MaSan__2A4B4B5E" FromRole="ChiTiet_DatSan" ToRole="San" />
+  </EntityType>
+  <EntityType Name="DatSan">
+    <Key>
+      <PropertyRef Name="MaDat" />
+    </Key>
+    <Property Name="MaDat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NgayDat" Type="DateTime" Precision="3" />
+    <Property Name="SoTien" Type="Double" />
+    <NavigationProperty Name="ChiTiet_DatSan" Relationship="Self.FK__ChiTiet_D__MaDat__2B3F6F97" FromRole="DatSan" ToRole="ChiTiet_DatSan" />
+  </EntityType>
+  <EntityType Name="LoaiSan">
+    <Key>
+      <PropertyRef Name="MaLoaiSan" />
+    </Key>
+    <Property Name="MaLoaiSan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenLoaiSan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="San" Relationship="Self.FK__San__MaLoaiSan__2C3393D0" FromRole="LoaiSan" ToRole="San" />
+  </EntityType>
+  <EntityType Name="San">
+    <Key>
+      <PropertyRef Name="MaSan" />
+    </Key>
+    <Property Name="MaSan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLoaiSan" Type="Int32" Nullable="false" />
+    <Property Name="TenSan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DIaChi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="GIaTien" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TrangThai" Type="Boolean" />
+    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTiet_DatSan" Relationship="Self.FK__ChiTiet_D__MaSan__2A4B4B5E" FromRole="San" ToRole="ChiTiet_DatSan" />
+    <NavigationProperty Name="LoaiSan" Relationship="Self.FK__San__MaLoaiSan__2C3393D0" FromRole="San" ToRole="LoaiSan" />
+  </EntityType>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTiet_D__MaDat__2B3F6F97">
+    <End Role="DatSan" Type="Self.DatSan" Multiplicity="1" />
+    <End Role="ChiTiet_DatSan" Type="Self.ChiTiet_DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DatSan">
+        <PropertyRef Name="MaDat" />
+      </Principal>
+      <Dependent Role="ChiTiet_DatSan">
+        <PropertyRef Name="MaDat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTiet_D__MaSan__2A4B4B5E">
+    <End Role="San" Type="Self.San" Multiplicity="1" />
+    <End Role="ChiTiet_DatSan" Type="Self.ChiTiet_DatSan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="San">
+        <PropertyRef Name="MaSan" />
+      </Principal>
+      <Dependent Role="ChiTiet_DatSan">
+        <PropertyRef Name="MaSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__San__MaLoaiSan__2C3393D0">
+    <End Role="LoaiSan" Type="Self.LoaiSan" Multiplicity="1" />
+    <End Role="San" Type="Self.San" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSan">
+        <PropertyRef Name="MaLoaiSan" />
+      </Principal>
+      <Dependent Role="San">
+        <PropertyRef Name="MaLoaiSan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AspNetUserRoles">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="WebsiteDatSanCauLongEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="ChiTiet_DatSan" EntityType="Self.ChiTiet_DatSan" />
+    <EntitySet Name="DatSan" EntityType="Self.DatSan" />
+    <EntitySet Name="LoaiSan" EntityType="Self.LoaiSan" />
+    <EntitySet Name="San" EntityType="Self.San" />
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTiet_D__MaDat__2B3F6F97" Association="Self.FK__ChiTiet_D__MaDat__2B3F6F97">
+      <End Role="DatSan" EntitySet="DatSan" />
+      <End Role="ChiTiet_DatSan" EntitySet="ChiTiet_DatSan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTiet_D__MaSan__2A4B4B5E" Association="Self.FK__ChiTiet_D__MaSan__2A4B4B5E">
+      <End Role="San" EntitySet="San" />
+      <End Role="ChiTiet_DatSan" EntitySet="ChiTiet_DatSan" />
+    </AssociationSet>
+    <AssociationSet Name="FK__San__MaLoaiSan__2C3393D0" Association="Self.FK__San__MaLoaiSan__2C3393D0">
+      <End Role="LoaiSan" EntitySet="LoaiSan" />
+      <End Role="San" EntitySet="San" />
+    </AssociationSet>
+    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
