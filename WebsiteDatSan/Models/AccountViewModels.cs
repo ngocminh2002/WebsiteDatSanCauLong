@@ -82,6 +82,24 @@ namespace WebsiteDatSan.Models
         [Required]
         [Display(Name = "Role")]
         public string Role { get; set; }
+
+        [Required(ErrorMessage = "Phone number is required.")]
+        [Display(Name = "Phonenumber")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "Invalid phone number.")]
+        public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Username is required.")]
+        [Display(Name = "Username")]
+        public string UserName { get; set; }
+
+        [Required(ErrorMessage = "Full name is required.")]
+        [Display(Name = "Fullname")]
+        public string FullName { get; set; }
+
+        [Required(ErrorMessage = "Address is required.")]
+        [Display(Name = "Address")]
+        public string Address { get; set; }
+
     }
 
     public class ResetPasswordViewModel

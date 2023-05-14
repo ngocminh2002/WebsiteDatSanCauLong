@@ -1,3 +1,5 @@
+D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.csproj.AssemblyReference.cache
+D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.csproj.CoreCompileInputs.cache
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\WebsiteDatSan.dll.config
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\WebsiteDatSan.dll
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\WebsiteDatSan.pdb
@@ -101,8 +103,6 @@ D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\Microsoft.Owin.Security.Twitter.xml
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\Microsoft.Owin.Security.OAuth.xml
 D:\DACS\WebsiteDatSan\WebsiteDatSan\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.csproj.AssemblyReference.cache
-D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.csproj.CoreCompileInputs.cache
 D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.csproj.CopyComplete
 D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.dll
 D:\DACS\WebsiteDatSan\WebsiteDatSan\obj\Debug\WebsiteDatSan.pdb

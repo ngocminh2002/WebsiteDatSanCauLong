@@ -10,6 +10,7 @@ namespace WebsiteDatSan.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 

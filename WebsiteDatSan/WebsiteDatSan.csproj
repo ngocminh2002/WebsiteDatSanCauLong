@@ -181,47 +181,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRoles.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaims.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogins.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUsers.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CauLong.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CauLong.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CauLong.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CauLong.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CauLong.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChiTiet_DatSan.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DatSan.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\AspNetRoles.cs" />
+    <Compile Include="Models\AspNetUserClaims.cs" />
+    <Compile Include="Models\AspNetUserLogins.cs" />
+    <Compile Include="Models\AspNetUsers.cs" />
+    <Compile Include="Models\ChiTiet_DatSan.cs" />
+    <Compile Include="Models\DatSan.cs" />
+    <Compile Include="Models\DatSanCauLong.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\LoaiSan.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\LoaiSan.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\San.cs">
-      <DependentUpon>CauLong.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\San.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -234,16 +204,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CauLong.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CauLong.edmx</DependentUpon>
-      <LastGenOutput>CauLong.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\CauLong.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CauLong.edmx</DependentUpon>
-      <LastGenOutput>CauLong.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\ChuSan\Views\web.config" />
@@ -254,13 +214,6 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Homess\Index.cshtml" />
-    <EntityDeploy Include="Models\CauLong.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CauLong.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CauLong.edmx.diagram">
-      <DependentUpon>CauLong.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
