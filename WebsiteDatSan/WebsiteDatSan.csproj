@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomessController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QLChuSanController.cs" />
     <Compile Include="Areas\ChuSan\ChuSanAreaRegistration.cs" />
     <Compile Include="Areas\ChuSan\Controllers\homesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Homess\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\QLChuSan\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

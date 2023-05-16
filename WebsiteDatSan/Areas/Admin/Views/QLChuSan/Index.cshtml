@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model List<WebsiteDatSan.Models.AspNetUsers>
+
+
+<h2>Danh sách người dùng ChuSan</h2>
+
+<table>
+    <tr>
+        <th>Tên đăng nhập</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Họ và tên đầy đủ</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.Address</td>
+            <td>@user.FullName</td>
+        </tr>
+    }
+</table>
+
+
+
